@@ -1,5 +1,5 @@
-# bzip2-hough
-My implementation of the BZip2 algorithm in C++. Developed based on the notes I took on the BZip2 algorithm while studying CS240 at the University of Waterloo.
+# Matthew Hough's version of BZip2
+My implementation of the BZip2 algorithm in C++ with a linear time Burrows-Wheeler transform algorithm. Developed based on the notes I took on the BZip2 algorithm while studying CS240 at the University of Waterloo.
 
 ## Development progress
 
@@ -14,3 +14,6 @@ My implementation of the BZip2 algorithm in C++. Developed based on the notes I 
 - [ ] Run-length encoding
 - [ ] Move-to-front transform
 - [ ] Burrows-Wheeler transform
+
+## Algorithm explanation
+Coming soon...
