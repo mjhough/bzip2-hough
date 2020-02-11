@@ -8,7 +8,7 @@ LDLIBS_CURL = $(shell curl-config --libs)
 LDLIBS= $(LDLIBS_XML2) $(LDLIBS_CURL)
 BIN=main
 
-OBJS = main.o BurrowsWheelerTransform.o BWTElement.o EncodingStep.o
+OBJS = main.o BurrowsWheelerTransform.o BWTElement.o MoveToFrontTransform.o EncodingStep.o
 
 all: main
 

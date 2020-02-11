@@ -4,13 +4,12 @@
 #include "EncodingStep.h"
 #include "BWTElement.h"
 
-class BurrowsWheelerTransform : protected EncodingStep {
+class BurrowsWheelerTransform : public EncodingStep {
   public:
     // Constructor
     BurrowsWheelerTransform(std::string in);
 
     // Functions
-    std::string getOutput();
     void updateInput(std::string in);
     void preprocessInput();
     void perform();

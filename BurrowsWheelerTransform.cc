@@ -13,11 +13,6 @@ void BurrowsWheelerTransform::updateInput(std::string in) {
   preprocessInput();
 }
 
-// Return the output string
-std::string BurrowsWheelerTransform::getOutput(void) {
-  return output;
-}
-
 void BurrowsWheelerTransform::preprocessInput(void) {
   for (int i = input.length(); i >= 0; i--) {
     BWTElement *el = new BWTElement(input[i]);
