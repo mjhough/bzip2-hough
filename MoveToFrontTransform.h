@@ -10,5 +10,5 @@ class MoveToFrontTransform : public EncodingStep {
 
   private:
     // Variables
-    std::string dictionary;
+    std::string dictionary = " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
 };

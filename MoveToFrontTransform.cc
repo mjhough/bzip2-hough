@@ -1,7 +1,5 @@
 #include "MoveToFrontTransform.h"
 
-std::string dictionary = " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
-
 // Constructor
 MoveToFrontTransform::MoveToFrontTransform(std::string in) {
 	input = in;
