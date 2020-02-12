@@ -3,6 +3,7 @@
 
 #include "BurrowsWheelerTransform.h"
 #include "MoveToFrontTransform.h"
+#include "RunLengthEncoding.h"
 
 int main(int argc, char *argv[]) {
   std::string in;
@@ -15,6 +16,10 @@ int main(int argc, char *argv[]) {
   MoveToFrontTransform mtf(bwt.getOutput());
   mtf.encode();
   std::cout << mtf.getOutput() << std::endl;
+
+  RunLengthEncoding rle(mtf.getOutput());
+  rle.encode();
+  std::cout << rle.getOutput() << std::endl;
 
   return 0;
 }

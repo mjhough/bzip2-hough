@@ -6,7 +6,7 @@ My implementation of the BZip2 algorithm in C++ with a linearithmic time Burrows
 #### Encoding
 - [x] Burrows-Wheeler transform
 - [x] Move-to-front transform
-- [ ] Run-length encoding
+- [x] Run-length encoding
 - [ ] Huffman encoding
 
 #### Decoding

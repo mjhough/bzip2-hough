@@ -1,4 +1,10 @@
 #include "EncodingStep.h"
 
-class RunLengthEncoding : protected EncodingStep {
-}
+class RunLengthEncoding : public EncodingStep {
+  public:
+    // Constructor
+    RunLengthEncoding(std::string in);
+
+    // Functions
+    void encode();
+};
