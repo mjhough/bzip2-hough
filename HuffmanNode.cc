@@ -1,6 +1,6 @@
 #include "HuffmanNode.h"
 
-HuffmanNode::HuffmanNode(char character, unsigned int freq) {
+HuffmanNode::HuffmanNode(std::string character, unsigned int freq) {
   this->character = character;
   this->freq = freq;
 
@@ -14,8 +14,4 @@ void HuffmanNode::updateLeft(HuffmanNode *left) {
 
 void HuffmanNode::updateRight(HuffmanNode *right) {
   this->right = right;
-}
-
-bool HuffmanNode::compareNodes(HuffmanNode *left, HuffmanNode *right) {
-  return (left->freq > right->freq);
 }

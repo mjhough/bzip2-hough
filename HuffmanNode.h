@@ -13,10 +13,9 @@ class HuffmanNode {
     HuffmanNode *left, *right;
 
     // Constructor
-    HuffmanNode(char character, unsigned int freq);
+    HuffmanNode(std::string character, unsigned int freq);
 
     // Functions
     void updateLeft(HuffmanNode *left);
     void updateRight(HuffmanNode *right);
-    bool compareNodes(HuffmanNode *left, HuffmanNode *right);
 };

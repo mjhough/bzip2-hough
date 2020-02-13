@@ -1,7 +1,10 @@
 #include <map>
+#include <queue> 
+#include <vector>
 #include <string>
 
 #include "EncodingStep.h"
+#include "HuffmanNode.h"
 
 class HuffmanEncoding : public EncodingStep {
   public:
@@ -10,8 +13,12 @@ class HuffmanEncoding : public EncodingStep {
 
     // Functions
     void buildTrie();
-    void computeFrequencies();
 
     // Variables
     std::map<std::string, int> frequencies;
+
+  private:
+    // Functions
+    void computeFrequencies();
+    void generateOutput();
 };

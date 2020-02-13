@@ -1,5 +1,11 @@
 #include "HuffmanEncoding.h"
 
+struct compareNodes {
+  bool operator()(HuffmanNode *left, HuffmanNode *right) {
+    return (left->freq > right->freq);
+  }
+};
+
 HuffmanEncoding::HuffmanEncoding(std::string in) {
   input = in;
   output = "";
@@ -7,6 +13,30 @@ HuffmanEncoding::HuffmanEncoding(std::string in) {
 
 void HuffmanEncoding::buildTrie(void) {
   computeFrequencies();
+
+  std::priority_queue<HuffmanNode*, std::vector<HuffmanNode*>, compareNodes> minHeap;
+  for (auto const &pair : frequencies) {
+    minHeap.push(new HuffmanNode(pair.first, pair.second));
+  }
+
+  while (minHeap.size() != 1) {
+    // Get two smallest frequency
+    // nodes and join them to create
+    // a new trie with a dummy node
+    HuffmanNode *left = minHeap.top();
+    minHeap.pop();
+    HuffmanNode *right = minHeap.top();
+    minHeap.pop();
+
+    // New frequency is sum of below.
+    // Give empty string as character value
+    HuffmanNode *sub_root = new HuffmanNode("", left->freq + right->freq);
+    sub_root->left = left;
+    sub_root->right = right;
+    minHeap.push(sub_root);
+  }
+
+  generateOutput();
 }
 
 void HuffmanEncoding::computeFrequencies(void) {
@@ -73,4 +103,8 @@ void HuffmanEncoding::computeFrequencies(void) {
       frequencies[val] = 1;
     }
   }
+}
+
+void HuffmanEncoding::generateOutput(void) {
+  // TODO: Write this
 }
