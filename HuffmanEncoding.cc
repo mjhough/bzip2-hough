@@ -36,7 +36,7 @@ void HuffmanEncoding::buildTrie(void) {
     minHeap.push(sub_root);
   }
 
-  generateOutput();
+  generateOutput(minHeap.top());
 }
 
 void HuffmanEncoding::computeFrequencies(void) {
@@ -105,6 +105,6 @@ void HuffmanEncoding::computeFrequencies(void) {
   }
 }
 
-void HuffmanEncoding::generateOutput(void) {
+void HuffmanEncoding::generateOutput(HuffmanNode *root) {
   // TODO: Write this
 }

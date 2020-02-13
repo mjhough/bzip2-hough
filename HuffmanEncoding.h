@@ -20,5 +20,5 @@ class HuffmanEncoding : public EncodingStep {
   private:
     // Functions
     void computeFrequencies();
-    void generateOutput();
+    void generateOutput(HuffmanNode *root);
 };
