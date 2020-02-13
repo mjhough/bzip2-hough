@@ -4,6 +4,7 @@
 #include "BurrowsWheelerTransform.h"
 #include "MoveToFrontTransform.h"
 #include "RunLengthEncoding.h"
+#include "HuffmanEncoding.h"
 
 int main(int argc, char *argv[]) {
   std::string in;
@@ -19,6 +20,10 @@ int main(int argc, char *argv[]) {
 
   RunLengthEncoding rle(mtf.getOutput());
   rle.encode();
+  std::cout << rle.getOutput() << std::endl;
+
+  HuffmanEncoding he(rle.getOutput());
+  he.buildTrie();
   std::cout << rle.getOutput() << std::endl;
 
   return 0;
