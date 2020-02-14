@@ -1,11 +1,5 @@
 #include "HuffmanEncoding.h"
 
-struct compareNodes {
-  bool operator()(HuffmanNode *left, HuffmanNode *right) {
-    return (left->freq > right->freq);
-  }
-};
-
 HuffmanEncoding::HuffmanEncoding(std::string in) {
   input = in;
   output = "";
@@ -14,7 +8,6 @@ HuffmanEncoding::HuffmanEncoding(std::string in) {
 void HuffmanEncoding::buildTrie(void) {
   computeFrequencies();
 
-  std::priority_queue<HuffmanNode*, std::vector<HuffmanNode*>, compareNodes> minHeap;
   for (auto const &pair : frequencies) {
     minHeap.push(new HuffmanNode(pair.first, pair.second));
   }
@@ -36,7 +29,67 @@ void HuffmanEncoding::buildTrie(void) {
     minHeap.push(sub_root);
   }
 
-  generateOutput(minHeap.top());
+  unsigned int i = 0;
+  while (i < input.length()) {
+    std::string val;
+    unsigned int num_times = 1;
+    if (input[i+1] == ' ' || i+1 >= input.length()) {
+      // One digit number
+      val.push_back(input[i]);
+      i += 2;
+    } else if (input[i+2] == ' ' || i+2 >= input.length()) {
+      // Two digit number
+      val.push_back(input[i]);
+      val.push_back(input[i+1]);
+      i += 3;
+    } else if (input[i+1] == '\\') {
+      // One digit number with RLE repeats
+      val.push_back(input[i]);
+
+      std::string reps_str;
+      unsigned int j = 0;
+      // Check for number of digits after marker
+      while (input[i+j+2] != ' ' && i+j+2 < input.length()) {
+        reps_str.push_back(input[i+j+2]);
+        j++;
+      }
+
+      // Add to num_times for later loop
+      num_times += std::stoi(reps_str);
+
+      i += j+3;
+    } else if (input[i+2] == '\\') {
+      // Two digit number with RLE repeats
+      val.push_back(input[i]);
+      val.push_back(input[i+1]);
+
+      val.push_back(input[i]);
+
+      std::string reps_str;
+      unsigned int j = 0;
+      // Check for number of digits after marker
+      while (input[i+j+3] != ' ' && i+j+3 < input.length()) {
+        reps_str.push_back(input[i+j+3]);
+        j++;
+      }
+
+      // Add to num_times for later loop
+      num_times += std::stoi(reps_str);
+
+      i += j+3;
+    }
+
+    // Generate the code and add to the output
+    while (num_times > 0) {
+      generateCode(minHeap.top(), "", val);
+      num_times--;
+
+      // Add a space between codes for readability
+      // Except for last one
+      if (i < input.length())
+        output.append(" ");
+    }
+  }
 }
 
 void HuffmanEncoding::computeFrequencies(void) {
@@ -105,6 +158,18 @@ void HuffmanEncoding::computeFrequencies(void) {
   }
 }
 
-void HuffmanEncoding::generateOutput(HuffmanNode *root) {
-  // TODO: Write this
+// Generate code for given character and append it to the output
+void HuffmanEncoding::generateCode(HuffmanNode *root, std::string str, std::string character) {
+  // Check if exists
+  if (root == NULL)
+    return;
+
+  // If the node we want, add to output
+  if (root->character == character) {
+    output.append(str);
+  }
+
+  // Follow left and right paths with 0 for left and 1 for right
+  generateCode(root->left, str + "0", character);
+  generateCode(root->right, str + "1", character);
 }

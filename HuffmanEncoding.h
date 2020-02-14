@@ -16,9 +16,15 @@ class HuffmanEncoding : public EncodingStep {
 
     // Variables
     std::map<std::string, int> frequencies;
+    struct compareNodes {
+      bool operator()(HuffmanNode *left, HuffmanNode *right) {
+        return (left->freq > right->freq);
+      }
+    };
+    std::priority_queue<HuffmanNode*, std::vector<HuffmanNode*>, compareNodes> minHeap;
 
   private:
     // Functions
     void computeFrequencies();
-    void generateOutput(HuffmanNode *root);
+    void generateCode(HuffmanNode *root, std::string str, std::string character);
 };

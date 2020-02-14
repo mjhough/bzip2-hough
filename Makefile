@@ -6,13 +6,13 @@ LD=g++
 LDLIBS_XML2 = $(shell xml2-config --libs)
 LDLIBS_CURL = $(shell curl-config --libs)
 LDLIBS= $(LDLIBS_XML2) $(LDLIBS_CURL)
-BIN=main
+BIN=bzip2-hough
 
-OBJS = main.o BurrowsWheelerTransform.o BWTElement.o MoveToFrontTransform.o RunLengthEncoding.o HuffmanNode.o HuffmanEncoding.o EncodingStep.o
+OBJS = bzip2-hough.o BurrowsWheelerTransform.o BWTElement.o MoveToFrontTransform.o RunLengthEncoding.o HuffmanNode.o HuffmanEncoding.o EncodingStep.o
 
-all: main
+all: bzip2-hough
 
-main: $(OBJS)
+bzip2-hough: $(OBJS)
 	$(LD) $(CPPFLAGS) -o $@ $(OBJS) $(LDLIBS)
 
 .c.o:
