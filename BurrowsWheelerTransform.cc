@@ -7,6 +7,14 @@ BurrowsWheelerTransform::BurrowsWheelerTransform(std::string in) {
   preprocessInput();
 }
 
+// Destructor
+BurrowsWheelerTransform::~BurrowsWheelerTransform(void) {
+  while (!lookupTable.empty()) {
+    delete lookupTable.front();
+    lookupTable.pop_front();
+  }
+}
+
 // Update the input string
 void BurrowsWheelerTransform::updateInput(std::string in) {
   this->input = in;

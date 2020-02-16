@@ -5,6 +5,13 @@ HuffmanEncoding::HuffmanEncoding(std::string in) {
   output = "";
 }
 
+HuffmanEncoding::~HuffmanEncoding(void) {
+  while (!minHeap.empty()) {
+    delete minHeap.top();
+    minHeap.pop();
+  }
+}
+
 void HuffmanEncoding::buildTrie(void) {
   computeFrequencies();
 

@@ -11,6 +11,9 @@ class HuffmanEncoding : public EncodingStep {
     // Constructor
     HuffmanEncoding(std::string in);
 
+    // Destructor
+    ~HuffmanEncoding();
+
     // Functions
     void buildTrie();
 

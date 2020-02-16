@@ -9,6 +9,9 @@ class BurrowsWheelerTransform : public EncodingStep {
     // Constructor
     BurrowsWheelerTransform(std::string in);
 
+    // Destructor
+    ~BurrowsWheelerTransform();
+
     // Functions
     void updateInput(std::string in);
     void preprocessInput();
